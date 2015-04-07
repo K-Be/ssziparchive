@@ -1,6 +1,5 @@
 # SSZipArchive [2.0]
 [![Build](https://img.shields.io/travis/joyent/node.svg)](#)
-[![Platform](http://img.shields.io/badge/platform-ios-blue.svg?style=flat)](https://developer.apple.com/iphone/index.action)
 [![Language](http://img.shields.io/badge/language-objectivec-brightgreen.svg?style=flat
 )](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
