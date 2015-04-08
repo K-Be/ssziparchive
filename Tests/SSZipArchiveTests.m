@@ -9,7 +9,6 @@
 #import "SSZipArchive.h"
 #import <XCTest/XCTest.h>
 //#import "CollectingDelegate.h"
-#import <SenTestingKit/SenTestingKit.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface CancelDelegate : NSObject <SSZipArchiveDelegate>
@@ -103,17 +102,15 @@
     
     // this is a monster
     // if testing on iOS, within 30 loops it will fail; however, on OS X, it may take about 900 loops
-    for (int test = 0; test < 1000; test++) 
-    {
-        // Zipping
-        NSString *archivePath = [outputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"queue_test_%d.zip",test]];
+    // Zipping
+	NSInteger test = 0;
+    NSString *archivePath = [outputPath stringByAppendingPathComponent:[NSString stringWithFormat:@"queue_test_%d.zip",test]];
            
-        [SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:inputPaths];
-        
-        long long threshold = 510000; // 510kB:size slightly smaller than a successful zip, but much larger than a failed one
-        long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:archivePath error:nil][NSFileSize] longLongValue];
-		 XCTAssertTrue(fileSize > threshold, @"zipping failed with fleSize %lld at %@!", fileSize, archivePath);
-    }
+	  [SSZipArchive createZipFileAtPath:archivePath withFilesAtPaths:inputPaths];
+	  
+	  long long threshold = 510000; // 510kB:size slightly smaller than a successful zip, but much larger than a failed one
+	  long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:archivePath error:nil][NSFileSize] longLongValue];
+	 XCTAssertTrue(fileSize > threshold, @"zipping failed with fleSize %lld at %@!", fileSize, archivePath);
 
 }
 
@@ -125,7 +122,8 @@
 
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSString *testPath = [outputPath stringByAppendingPathComponent:@"Readme.markdown"];
-	XCTAssertTrue([fileManager fileExistsAtPath:testPath], @"Readme unzipped");
+	BOOL exist = [fileManager fileExistsAtPath:testPath];
+	XCTAssertTrue(exist, @"Readme unzipped");
 
 	testPath = [outputPath stringByAppendingPathComponent:@"LICENSE"];
 	XCTAssertTrue([fileManager fileExistsAtPath:testPath], @"LICENSE unzipped");
