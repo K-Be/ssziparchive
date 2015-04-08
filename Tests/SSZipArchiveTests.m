@@ -8,16 +8,16 @@
 
 #import "SSZipArchive.h"
 #import <XCTest/XCTest.h>
-#import "CollectingDelegate.h"
+//#import "CollectingDelegate.h"
 #import <SenTestingKit/SenTestingKit.h>
 #import <CommonCrypto/CommonDigest.h>
 
 @interface CancelDelegate : NSObject <SSZipArchiveDelegate>
-@property (nonatomic, assign) int numFilesUnzipped;
-@property (nonatomic, assign) int numFilesToUnzip;
+@property (nonatomic, assign) NSInteger numFilesUnzipped;
+@property (nonatomic, assign) NSInteger numFilesToUnzip;
 @property (nonatomic, assign) BOOL didUnzipArchive;
-@property (nonatomic, assign) int loaded;
-@property (nonatomic, assign) int total;
+@property (nonatomic, assign) unsigned long long loaded;
+@property (nonatomic, assign) unsigned long long total;
 @end
 
 @implementation CancelDelegate
@@ -34,10 +34,10 @@
 {
 	_didUnzipArchive = YES;
 }
-- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total
+- (void)zipArchiveProgressEvent:(unsigned long long)loaded total:(unsigned long long)total
 {
-	_loaded = (int)loaded;
-	_total = (int)total;
+	_loaded = loaded;
+	_total = total;
 }
 @end
 
@@ -112,7 +112,7 @@
         
         long long threshold = 510000; // 510kB:size slightly smaller than a successful zip, but much larger than a failed one
         long long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:archivePath error:nil][NSFileSize] longLongValue];
-        STAssertTrue(fileSize > threshold, @"zipping failed at %@!",fileSize,archivePath);
+		 XCTAssertTrue(fileSize > threshold, @"zipping failed with fleSize %lld at %@!", fileSize, archivePath);
     }
 
 }
@@ -346,7 +346,7 @@
 //	[SSZipArchive unzipFileAtPath:zipPath toDestination:outputPath];
 //}
 
--(void)testShouldProvidePathOfUnzippedFileInDelegateCallback {
+/*-(void)testShouldProvidePathOfUnzippedFileInDelegateCallback {
     CollectingDelegate *collector = [CollectingDelegate new];
     NSString *zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"TestArchive" ofType:@"zip"];
    	NSString *outputPath = [self _cachesPath:@"Regular"];
@@ -355,7 +355,7 @@
 
 //    STAssertEqualObjects([collector.files objectAtIndex:0], @"LICENSE.txt", nil);
 //    STAssertEqualObjects([collector.files objectAtIndex:1], @"README.md", nil);
-}
+}*/
 
 #pragma mark - SSZipArchiveDelegate
 
@@ -383,7 +383,7 @@
 	NSLog(@"*** zipArchiveDidUnzipFileAtIndex: `%d` totalFiles: `%d` archivePath: `%@` fileInfo:", (int)fileIndex, (int)totalFiles, archivePath);
 }
 
-- (void)zipArchiveProgressEvent:(NSInteger)loaded total:(NSInteger)total {
+- (void)zipArchiveProgressEvent:(unsigned long long)loaded total:(unsigned long long)total {
     NSLog(@"*** zipArchiveProgressEvent: loaded: `%d` total: `%d`", (int)loaded, (int)total);
     [progressEvents addObject:[[NSNumber alloc] initWithInteger:loaded]];
 }
