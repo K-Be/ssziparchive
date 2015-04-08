@@ -178,6 +178,45 @@
 }
 
 
+- (void)testUnzipSmallWithoutPass
+{
+	NSString* zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"smallNOPass" ofType:@"zip"];
+	NSString* destinationPath = [self _cachesPath:@"smallWithoutPass"];
+	[SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath];
+	
+	NSString* orderFilePath = [destinationPath stringByAppendingPathComponent:@"smallNOPass/order.json"];
+	XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:orderFilePath], @"order file must exist");
+	NSInteger fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:orderFilePath error:nil][NSFileSize] integerValue];
+	XCTAssertTrue(fileSize == 21, @"should be 21 byte, but now is %d", fileSize);
+}
+
+
+- (void)testPassSync2File
+{
+	NSString* zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"sync.1" ofType:@"zip"];
+	NSString* destinationPath = [self _cachesPath:@"syncWithPass2"];
+	[SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath overwrite:YES password:@"pass" error:nil];
+	
+	NSString* orderFilePath = [destinationPath stringByAppendingPathComponent:@"sync.1/backgrounds/order.json"];
+	XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:orderFilePath], @"order file must exist");
+	NSInteger fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:orderFilePath error:nil][NSFileSize] integerValue];
+	XCTAssertTrue(fileSize == 21, @"should be 21 byte, but now is %d", fileSize);
+}
+
+
+- (void)testUnzipSmallWithPass
+{
+	NSString* zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"smallNOPass" ofType:@"zip"];
+	NSString* destinationPath = [self _cachesPath:@"smallWithPass"];
+	[SSZipArchive unzipFileAtPath:zipPath toDestination:destinationPath overwrite:YES password:@"pass" error:nil];
+	
+	NSString* orderFilePath = [destinationPath stringByAppendingPathComponent:@"smallNOPass/order.json"];
+	XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:orderFilePath], @"order file must exist");
+	NSInteger fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:orderFilePath error:nil][NSFileSize] integerValue];
+	XCTAssertTrue(fileSize == 21, @"should be 21 byte, but now is %d", fileSize);
+}
+
+
 - (void)testUnzippingWithSymlinkedFileInside {
 
     NSString* zipPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"SymbolicLink" ofType:@"zip"];

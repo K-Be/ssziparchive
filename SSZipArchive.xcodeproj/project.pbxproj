@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		011F4B96182D71B700DE704F /* RelativeSymbolicLink.zip in Resources */ = {isa = PBXBuildFile; fileRef = 011F4B95182D71B700DE704F /* RelativeSymbolicLink.zip */; };
 		011F4B97182D72B400DE704F /* RelativeSymbolicLink.zip in Resources */ = {isa = PBXBuildFile; fileRef = 011F4B95182D71B700DE704F /* RelativeSymbolicLink.zip */; };
-		136BC3C21AD4E207000F1632 /* smallNOPass.zip in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C01AD4E207000F1632 /* smallNOPass.zip */; };
-		136BC3C31AD4E207000F1632 /* smallPass.zip in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C11AD4E207000F1632 /* smallPass.zip */; };
 		136BC3CD1AD4E23E000F1632 /* 0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C51AD4E23E000F1632 /* 0.m4a */; };
 		136BC3CE1AD4E23E000F1632 /* 1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C61AD4E23E000F1632 /* 1.m4a */; };
 		136BC3CF1AD4E23E000F1632 /* 2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C71AD4E23E000F1632 /* 2.m4a */; };
@@ -19,6 +17,9 @@
 		136BC3D21AD4E23E000F1632 /* 5.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3CA1AD4E23E000F1632 /* 5.m4a */; };
 		136BC3D31AD4E23E000F1632 /* 6.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3CB1AD4E23E000F1632 /* 6.m4a */; };
 		136BC3D41AD4E23E000F1632 /* 7.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3CC1AD4E23E000F1632 /* 7.m4a */; };
+		1389B1DF1AD4EE490056618C /* smallNOPass.zip in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C01AD4E207000F1632 /* smallNOPass.zip */; };
+		1389B1E01AD4EE4C0056618C /* smallPass.zip in Resources */ = {isa = PBXBuildFile; fileRef = 136BC3C11AD4E207000F1632 /* smallPass.zip */; };
+		1389B1E61AD4F0350056618C /* sync.1.zip in Resources */ = {isa = PBXBuildFile; fileRef = 1389B1E41AD4EFFC0056618C /* sync.1.zip */; };
 		210D525417DEFB880060D41A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 210D524C17DEFB880060D41A /* ioapi.c */; };
 		210D525517DEFB880060D41A /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 210D524C17DEFB880060D41A /* ioapi.c */; };
 		210D525617DEFB880060D41A /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 210D524E17DEFB880060D41A /* mztools.c */; };
@@ -71,6 +72,7 @@
 		136BC3CA1AD4E23E000F1632 /* 5.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 5.m4a; sourceTree = "<group>"; };
 		136BC3CB1AD4E23E000F1632 /* 6.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 6.m4a; sourceTree = "<group>"; };
 		136BC3CC1AD4E23E000F1632 /* 7.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = 7.m4a; sourceTree = "<group>"; };
+		1389B1E41AD4EFFC0056618C /* sync.1.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = sync.1.zip; sourceTree = "<group>"; };
 		210D524B17DEFB880060D41A /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		210D524C17DEFB880060D41A /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		210D524D17DEFB880060D41A /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		21CC41EF17DB7D3500201DDC /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				1389B1E41AD4EFFC0056618C /* sync.1.zip */,
 				136BC3C01AD4E207000F1632 /* smallNOPass.zip */,
 				136BC3C11AD4E207000F1632 /* smallPass.zip */,
 				011F4B95182D71B700DE704F /* RelativeSymbolicLink.zip */,
@@ -329,8 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				011F4B96182D71B700DE704F /* RelativeSymbolicLink.zip in Resources */,
-				136BC3C21AD4E207000F1632 /* smallNOPass.zip in Resources */,
-				136BC3C31AD4E207000F1632 /* smallPass.zip in Resources */,
 				A5CD0D3A1AD3490700E7F209 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +353,10 @@
 				136BC3CE1AD4E23E000F1632 /* 1.m4a in Resources */,
 				136BC3D11AD4E23E000F1632 /* 4.m4a in Resources */,
 				136BC3D21AD4E23E000F1632 /* 5.m4a in Resources */,
+				1389B1E01AD4EE4C0056618C /* smallPass.zip in Resources */,
+				1389B1DF1AD4EE490056618C /* smallNOPass.zip in Resources */,
 				21CC41FB17DB7D3500201DDC /* TestArchive.zip in Resources */,
+				1389B1E61AD4F0350056618C /* sync.1.zip in Resources */,
 				21CC41FC17DB7D3500201DDC /* TestPasswordArchive.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +523,7 @@
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "Tests/SSZipArchiveTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
